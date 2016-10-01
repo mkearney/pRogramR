@@ -1,6 +1,6 @@
 ---
 output:
-  BiocStyle::md_document
+  BiocStyle::html_document
 ---
 
 # ch-01
