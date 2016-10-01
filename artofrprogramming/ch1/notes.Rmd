@@ -2,6 +2,12 @@
 output:
   BiocStyle::html_document
 ---
+<style>
+a {
+  text-decoration: none;
+}
+</style>
+
 
 # ch-01
 

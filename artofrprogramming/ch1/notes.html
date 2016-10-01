@@ -58,6 +58,11 @@ document.addEventListener("DOMContentLoaded", function() {
 </ul>
 </div>
 
+<style>
+a {
+  text-decoration: none;
+}
+</style>
 <div id="ch-01" class="section level1">
 <h1><span class="header-section-number">1</span> ch-01</h1>
 <div id="simple-loop" class="section level2">
@@ -99,10 +104,10 @@ mb &lt;- microbenchmark(
 
 mb</code></pre>
 <pre><code>## Unit: microseconds
-##    expr    min      lq     mean  median      uq     max neval
-##  simple 22.564 26.3165 34.05772 30.0265 36.1355  80.032   100
-##  c--ish 33.611 38.8320 52.27601 45.0730 49.6740 230.674   100
-##  vector  2.341  2.7795  3.72748  3.0600  3.8170  10.792   100</code></pre>
+##    expr    min     lq     mean  median      uq    max neval
+##  simple 23.874 27.822 33.18729 33.0485 35.2805 95.336   100
+##  c--ish 32.139 39.069 43.66253 43.2325 47.3390 87.253   100
+##  vector  2.101  2.471  2.83678  2.6365  2.8650  9.868   100</code></pre>
 <pre><code>Unit: microseconds
    expr    min      lq     mean  median      uq     max neval
  simple 24.357 25.0635 34.05510 25.9325 31.2460 109.947   100
