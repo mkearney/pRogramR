@@ -1,10 +1,25 @@
 ---
-output:
-  BiocStyle::html_document
+output: BiocStyle::html_document
+toc: FALSE
 ---
 <style>
+@import 'https://fonts.googleapis.com/css?family=Inconsolata|Roboto:400,700';
+body {
+  font-family: Roboto !important;
+}
+pre code {
+ font-family: Inconsolata !important;
+}
 a {
-  text-decoration: none;
+  text-decoration: none !important;
+  color: #0A0A0A !important;
+}
+a:hover {
+  color: #dd3333 !important;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #4466ee !important;
+  font-weight: bold !important;
 }
 </style>
 
@@ -45,6 +60,8 @@ oddcount3 <- function(x) {
 
 ## speed test
 
+Speed test shows speed benefits from vectorising.
+
 ```{r}
 library(microbenchmark)
 
@@ -58,10 +75,16 @@ mb <- microbenchmark(
 mb
 ```
 
+
+```{r}
+library(microbenchmark)
+
+mb <- microbenchmark(
+  "range" = x[1:(length(x)-1)],
+  "minus" = x[-length(x)],
+  times = 1000L
+)
+
+mb
 ```
-Unit: microseconds
-   expr    min      lq     mean  median      uq     max neval
- simple 24.357 25.0635 34.05510 25.9325 31.2460 109.947   100
- c--ish 33.380 35.1320 47.63017 36.4185 45.4605 140.943   100
- vector  2.412  2.7055  4.09381  2.8715  3.9835  20.515   100
-```
+

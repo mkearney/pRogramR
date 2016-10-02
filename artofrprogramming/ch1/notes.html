@@ -47,20 +47,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-<h1>Contents</h1>
-<div id="TOC">
-<ul>
-<li><a href="#ch-01"><span class="toc-section-number">1</span> ch-01</a><ul>
-<li><a href="#simple-loop"><span class="toc-section-number">1.1</span> simple loop</a></li>
-<li><a href="#vectorise"><span class="toc-section-number">1.2</span> vectorise</a></li>
-<li><a href="#speed-test"><span class="toc-section-number">1.3</span> speed test</a></li>
-</ul></li>
-</ul>
-</div>
 
 <style>
+@import 'https://fonts.googleapis.com/css?family=Inconsolata|Roboto:400,700';
+body {
+  font-family: Roboto !important;
+}
+pre code {
+ font-family: Inconsolata !important;
+}
 a {
-  text-decoration: none;
+  text-decoration: none !important;
+  color: #0A0A0A !important;
+}
+a:hover {
+  color: #dd3333 !important;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #4466ee !important;
+  font-weight: bold !important;
 }
 </style>
 <div id="ch-01" class="section level1">
@@ -93,6 +98,7 @@ oddcount2 &lt;- function(x) {
 </div>
 <div id="speed-test" class="section level2">
 <h2><span class="header-section-number">1.3</span> speed test</h2>
+<p>Speed test shows speed benefits from vectorising.</p>
 <pre class="r"><code>library(microbenchmark)
 
 x &lt;- sample(1:200, 50)
@@ -104,15 +110,23 @@ mb &lt;- microbenchmark(
 
 mb</code></pre>
 <pre><code>## Unit: microseconds
-##    expr    min     lq     mean  median      uq    max neval
-##  simple 23.874 27.822 33.18729 33.0485 35.2805 95.336   100
-##  c--ish 32.139 39.069 43.66253 43.2325 47.3390 87.253   100
-##  vector  2.101  2.471  2.83678  2.6365  2.8650  9.868   100</code></pre>
-<pre><code>Unit: microseconds
-   expr    min      lq     mean  median      uq     max neval
- simple 24.357 25.0635 34.05510 25.9325 31.2460 109.947   100
- c--ish 33.380 35.1320 47.63017 36.4185 45.4605 140.943   100
- vector  2.412  2.7055  4.09381  2.8715  3.9835  20.515   100</code></pre>
+##    expr    min      lq     mean  median      uq    max neval
+##  simple 22.128 26.6805 30.25567 29.3680 33.6440 66.955   100
+##  c--ish 31.919 37.5240 42.49200 40.7665 44.4765 81.572   100
+##  vector  2.101  2.4885  2.94174  2.6390  2.8665 11.984   100</code></pre>
+<pre class="r"><code>library(microbenchmark)
+
+mb &lt;- microbenchmark(
+  &quot;range&quot; = x[1:(length(x)-1)],
+  &quot;minus&quot; = x[-length(x)],
+  times = 1000L
+)
+
+mb</code></pre>
+<pre><code>## Unit: nanoseconds
+##   expr  min   lq     mean median     uq   max neval
+##  range 1075 1283 2132.792 1428.5 2468.5 48119  1000
+##  minus  932 1097 2040.350 1265.0 2152.5 41705  1000</code></pre>
 </div>
 </div>
 
