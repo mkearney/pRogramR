@@ -1,0 +1,7 @@
+Mikes-MacBook-Air:programr mwk$ git log --pretty=format:"%h - %an, %ar : %s"
+a5d2cc5 - Michael Kearney, 3 minutes ago : hw and proposal
+c64dfdc - Michael Kearney, 4 days ago : html style
+9ce7246 - Michael Kearney, 4 days ago : css
+9f9f817 - Michael Kearney, 4 days ago : html
+8058358 - Michael Kearney, 4 days ago : init
+Mikes-MacBook-Air:programr mwk$
