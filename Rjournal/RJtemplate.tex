@@ -1,0 +1,62 @@
+% !TeX root = RJwrapper.tex
+\title{rtweet: Collecting Twitter Data}
+\author{by Michael W. Kearney}
+
+\maketitle
+
+\abstract{
+An implementation of calls designed to extract and organize Twitter data via Twitter's REST and stream API's. Functions formulate GET and POST requests and convert response objects to more user friendly structures, e.g., data frames or lists. Specific consideration is given to functions designed to return tweets, friends, and followers.
+}
+
+Introductory section which may include references in parentheses
+\citep{R}, or cite a reference such as \citet{R} in the text.
+
+\section{Working with APIs}
+
+This section may contain a figure such as Figure~\ref{figure:rlogo}.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics{Rlogo}
+  \caption{The logo of R.}
+  \label{figure:rlogo}
+\end{figure}
+
+\section{rtweet Package}
+
+My research examines the intersection of new media environments and
+political communication using innovative quantitative research methods.
+My current work analyzes ``big data'' to better understand the
+relationship between selective exposure and social media.
+
+In working to systematically collect and wrangle large amounts of data,
+I created and now maintain \emph{rtweet}, the successor package to
+\emph{twitteR} for collecting Twitter data. Originally developed to collect
+data for my dissertation, \emph{rtweet} now features numerous diverse
+methods for interacting with Twitter APIs and represents the future of
+open-source efforts in collecting Twitter data.
+
+\begin{example}
+  library(rtweet)
+  tw <- search_tweets(``rstats'')
+  head(tw)
+\end{example}
+
+\section{proposal}
+
+Most of the work toward creating the package is already done. I have
+already published \textit{rtweet} on CRAN and have received a fair amount
+of feedback via email and Github. I still want to add a couple new
+features and implement at least a handful of improvements, but my
+next big goal is to advertise the package and have my work count toward
+something a little more tangible. With this in mind, for my course project
+in \textit{Statistical Computing and Foundations}, I propose that I write and
+submit an article about \textit{rtweet} to the \textit{R Journal}.
+
+\bibliography{RJreferences}
+
+\address{Michael W. Kearney\\
+  University of Kansas\\
+  1440 Jayhawk Blvd, Bailey Rm. 102\\
+  Lawrence, KS 66044\\}
+\email{email@mikewk.com}
