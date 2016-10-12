@@ -82,7 +82,6 @@ truncsmart <- function(textstring, linewidth = 10, tol = c(5, 5),
     }
     paste0(ltrso, collapse  = "")
 }
-truncsmart(textstring, 59)
 
 return_widthval <- function(ltrs, capwidth) {
     caps <- vapply(ltrs, function(x) x %in% LETTERS,
@@ -91,29 +90,6 @@ return_widthval <- function(ltrs, capwidth) {
     widthval[caps] <- capwidth
     widthval
 }
-
-# speed test
-textstring <- "This is a long string that needs to be Truncated. This is a long string that needs to be Truncated. This is a long string that needs to be truncated. This is a long string that needs to be truncated, and so this is a LONG STRING that needs to be truncated, and so this is a LONG STRING that needs to be truncated, and so this is a LONG STRING that needs to be TRUNCATED."
-library(microbenchmark)
-
-microbenchmark(
-    truncsmart(textstring, 20),
-    truncsmart_og(textstring, 20),
-    times = 200L)
-
-ltrs <- strsplit(textstring, split = "")[[1]]
-caps <- vapply(ltrs, function(x) x %in% LETTERS,
-    vector("logical", 1), USE.NAMES = FALSE)
-
-foo <- function(caps, capwidth) {
-        widthval <- rep(1, length(caps))
-        widthval[caps] <- capwidth
-        widthval
-    }
- microbenchmark(
-        foo(caps, capwidth),
-        ifelse(caps == TRUE, capwidth, 1)
-        )
 
 truncsmart <- Vectorize(truncsmart, USE.NAMES = FALSE)
 

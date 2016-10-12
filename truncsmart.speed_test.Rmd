@@ -1,0 +1,30 @@
+---
+output:
+  html_document:
+    keep_md: true
+---
+
+#### Prepare test
+
+```{r, echo=TRUE}
+textstring <- "This is a long string that needs to be Truncated. This is a long string that needs to be Truncated. This is a long string that needs to be truncated. This is a long string that needs to be truncated, and so this is a LONG STRING that needs to be truncated, and so this is a LONG STRING that needs to be truncated, and so this is a LONG STRING that needs to be TRUNCATED."
+library(microbenchmark)
+source("truncsmart_kearney.R")
+source("truncsmart_orig.R")
+```
+
+#### Speed Test
+
+```{r, echo=TRUE}
+mb <- microbenchmark(
+    "mine" = truncsmart(textstring, 20),
+    "original" = truncsmart_og(textstring, 20))
+```
+
+
+#### Results
+
+```{r, echo=TRUE}
+mb
+plot(mb)
+```
